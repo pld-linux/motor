@@ -35,7 +35,12 @@ jest g³êboka integracja z CVS.
 
 %build
 rm -f missing
-%{__gettextize}
+if gettextize --version | grep -q '0\.11\.' ; then
+	%{__gettextize} --intl
+	cp -f po/Makevars{.template,}
+else
+	%{__gettextize}
+fi
 %{__aclocal}
 %{__autoconf}
 %{__automake}
