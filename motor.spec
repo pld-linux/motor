@@ -35,8 +35,8 @@ jest g³êboka integracja z CVS.
 rm -f missing
 gettextize --copy --force
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 CPPFLAGS="-I%{_includedir}/ncurses"; export CPPFLAGS
 CXXFLAGS="%{rpmcflags} -fno-rtti"; export CXXFLAGS
 %configure
