@@ -36,7 +36,7 @@ rm -f missing
 gettextize --copy --force
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 CPPFLAGS="-I%{_includedir}/ncurses"; export CPPFLAGS
 CXXFLAGS="%{rpmcflags} -fno-rtti"; export CXXFLAGS
 %configure
