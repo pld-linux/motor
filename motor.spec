@@ -1,8 +1,8 @@
 Summary:	Text mode based programming IDE for Linux
 Summary(pl):	¦rodowisko programistyczne dla Linuksa
 Name:		motor
-Version:	3.2.2
-Release:	2
+Version:	3.2.3
+Release:	1
 License:	GPL
 Group:		Development/Tools
 Source0:	http://konst.org.ua/download/%{name}-%{version}.tar.gz
@@ -33,8 +33,9 @@ jest g³êboka integracja z CVS.
 
 %build
 rm -f missing
-%{__gettextize}
-%{__aclocal}
+%{__gettextize} --intl
+cp po/Makevars.template po/Makevars
+%{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
 CPPFLAGS="-I%{_includedir}/ncurses"; export CPPFLAGS
