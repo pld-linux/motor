@@ -33,7 +33,7 @@ jest g³êboka integracja z CVS.
 
 %build
 rm -f missing
-gettextize --copy --force
+%{__gettextize}
 aclocal
 %{__autoconf}
 %{__automake}
