@@ -1,0 +1,72 @@
+diff -Nru motor-1.2.3/src/Makefile.in motor-1.2.3.new/src/Makefile.in
+--- motor-1.2.3/src/Makefile.in	Sun Jul  2 03:50:27 2000
++++ motor-1.2.3.new/src/Makefile.in	Sun Jul  2 03:52:40 2000
+@@ -26,6 +26,10 @@
+ INCLUDE = -I$(KTPATH)/include -I../include
+ LIBPATH = -L$(KTPATH)
+ 
++CFLAGS = @CFLAGS@
++LDFLAGS = @LDFLAGS@
++CXXFLAGS = @CXXFLAGS@
++
+ VERSION = @VERSION@
+ 
+ TAREXCLUDE = \
+@@ -45,7 +49,7 @@
+     motor.core.wl.o
+ 
+ $(PROG): $(OBJS) $(KT)
+-	@CXX@ @LDFLAGS@ -o $(PROG) $(OBJS) $(LIBS) $(LIBPATH)
++	@CXX@ $(LDFLAGS) -o $(PROG) $(OBJS) $(LIBS) $(LIBPATH)
+ 
+ all: $(PROG)
+ 
+@@ -53,15 +57,15 @@
+ 	cd ../ktools/src; make -f ../../$(PROG)/Makefile.kt
+ 
+ %.o : %.cc
+-	@CXX@ $*.cc -c $(INCLUDE) '-DVERSION="$(VERSION)"' '-DSHAREDIR="$(datadir)"' -o $*.o
++	@CXX@ $*.cc $(CXXFLAGS) -c $(INCLUDE) '-DVERSION="$(VERSION)"' '-DSHAREDIR="$(datadir)"' -o $*.o
+ 
+ %.o : %.c
+-	@CC@ $*.c -c $(INCLUDE) '-DVERSION="$(VERSION)"' '-DSHAREDIR="$(datadir)"' -o $*.o
++	@CC@ $*.c $(CFLAGS) -c $(INCLUDE) '-DVERSION="$(VERSION)"' '-DSHAREDIR="$(datadir)"' -o $*.o
+ 
+ install: all
+-	install -s motor $(bindir)/$(PROG); \
+-	mkdir -p $(datadir)/$(PROG); \
+-	cp ../share/* ../COPYING $(datadir)/$(PROG)/
++	mkdir -p $(DESTDIR)$(bindir) $(DESTDIR)$(datadir)/$(PROG)
++	install motor $(DESTDIR)$(bindir)/$(PROG)
++	cp ../share/* $(DESTDIR)$(datadir)/$(PROG)/
+ 
+ snap: mclean
+ 	cd ../.. ; tar zcvfh motor.latest.tar.gz motor $(TAREXCLUDE)
+diff -Nru motor-1.2.3/ktools/src/Makefile.in motor-1.2.3.new/ktools/src/Makefile.in
+--- motor-1.2.3/ktools/src/Makefile.in	Sat Jul  1 11:25:16 2000
++++ motor-1.2.3.new/ktools/src/Makefile.in	Sun Jul  2 04:01:15 2000
+@@ -1,8 +1,9 @@
+ CC = @CC@
+ CPP = @CXX@
+ RANLIB = @RANLIB@
+-
+-CFLAGS = #-g -Wall -DUNIX
++CFLAGS = @CFLAGS@
++LDFLAGS = @LDFLAGS@
++CXXFLAGS = @CXXFLAGS@
+ 
+ INCLUDE = -I../include
+ 
+@@ -22,10 +23,10 @@
+ all: $(LIB)
+ 
+ %.o : %.cc
+-	$(CPP) $*.cc -c $(INCLUDE) -o $*.o
++	$(CPP) $*.cc $(CXXFLAGS) -c $(INCLUDE) -o $*.o
+ 
+ %.o : %.c
+-	$(CC) $*.c -c $(INCLUDE) -o $*.o
++	$(CC) $*.c -c $(CFLAGS) $(INCLUDE) -o $*.o
+ 
+ clean:
+ 	rm -f *.o $(LIB); \
