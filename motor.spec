@@ -2,13 +2,14 @@ Summary:	Text mode based programming IDE for Linux
 Summary(pl):	¦rodowisko programistyczne dla Linuksa
 Name:		motor
 Version:	3.2.4
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Tools
 Source0:	http://konst.org.ua/download/%{name}-%{version}.tar.gz
 # Source0-md5:	cb24eba00be62ff3fab2a1a4c03e1cb3
 Patch0:		%{name}-autoconf.patch
 Patch1:		%{name}-AC_PROG_MAKE_SET.patch
+Patch2:		%{name}-po.patch
 URL:		http://konst.org.ua/motor/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -33,6 +34,7 @@ jest g³êboka integracja z CVS.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f missing
