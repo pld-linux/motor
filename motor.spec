@@ -1,7 +1,7 @@
 Summary:	Text mode based programming IDE for Linux
 Summary(pl):	¦rodowisko programistyczne dla Linuksa
 Name:		motor
-Version:	3.2.0
+Version:	3.2.2
 Release:	1
 License:	GPL
 Group:		Development/Tools
@@ -49,8 +49,6 @@ install -d $RPM_BUILD_ROOT%{_datadir}/motor
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf AUTHORS ChangeLog FAQ README TODO
-
 %find_lang %{name}
 
 %clean
@@ -58,6 +56,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz tutorial/*
+%doc AUTHORS ChangeLog FAQ README TODO tutorial/*
 %attr(755,root,root) %{_bindir}/motor
 %{_datadir}/motor
