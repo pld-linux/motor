@@ -1,7 +1,7 @@
 Summary:	Text mode based programming IDE for Linux
 Name:		motor
 Version:	1.2.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Tools
 Group(fr):	Development/Outils
