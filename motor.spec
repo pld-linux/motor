@@ -1,7 +1,7 @@
 Summary:	Text mode based programming IDE for Linux
 Summary(pl):	¦rodowisko programistyczne dla Linuksa
 Name:		motor
-Version:	3.2.3
+Version:	3.2.4
 Release:	1
 License:	GPL
 Group:		Development/Tools
