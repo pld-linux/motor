@@ -1,72 +1,36 @@
-diff -Nru motor-1.2.3/src/Makefile.in motor-1.2.3.new/src/Makefile.in
---- motor-1.2.3/src/Makefile.in	Sun Jul  2 03:50:27 2000
-+++ motor-1.2.3.new/src/Makefile.in	Sun Jul  2 03:52:40 2000
-@@ -26,6 +26,10 @@
- INCLUDE = -I$(KTPATH)/include -I../include
- LIBPATH = -L$(KTPATH)
+diff -urN motor-2.17.13.org/share/Makefile.am motor-2.17.13/share/Makefile.am
+--- motor-2.17.13.org/share/Makefile.am	Sat Jun  2 20:29:55 2001
++++ motor-2.17.13/share/Makefile.am	Sat Jun  2 20:47:31 2001
+@@ -12,11 +12,11 @@
+ 	-if test -d templates; then rm -f tmpl.tar.gz; fi
  
-+CFLAGS = @CFLAGS@
-+LDFLAGS = @LDFLAGS@
-+CXXFLAGS = @CXXFLAGS@
-+
- VERSION = @VERSION@
+ install-data-local: tmpl.tar.gz
+-	tar zxvf tmpl.tar.gz -C $(datadir)/motor/
+-	-find $(datadir)/motor/ -name CVS -type d -exec rm -rf {} \;
++	tar zxvf tmpl.tar.gz -C $(DESTDIR)$(datadir)/motor/
++	-find $(DESTDIR)$(datadir)/motor/ -name CVS -type d -exec rm -rf {} \;
+ 	if test -d templates; then rm -f tmpl.tar.gz; fi
  
- TAREXCLUDE = \
-@@ -45,7 +49,7 @@
-     motor.core.wl.o
+ uninstall-local:
+-	rm -rf $(datadir)/motor/templates
++	rm -rf $(DESTDIR)$(datadir)/motor/templates
  
- $(PROG): $(OBJS) $(KT)
--	@CXX@ @LDFLAGS@ -o $(PROG) $(OBJS) $(LIBS) $(LIBPATH)
-+	@CXX@ $(LDFLAGS) -o $(PROG) $(OBJS) $(LIBS) $(LIBPATH)
+ EXTRA_DIST = tmpl.tar.gz $(mshare_DATA)
+diff -urN motor-2.17.13.org/src/Makefile.am motor-2.17.13/src/Makefile.am
+--- motor-2.17.13.org/src/Makefile.am	Sat Jun  2 20:29:55 2001
++++ motor-2.17.13/src/Makefile.am	Sat Jun  2 20:39:45 2001
+@@ -1,5 +1,5 @@
+ INCLUDES = -I../include -I../ktools/include -I../parser/include -I$(top_srcdir)/intl
+-CPPFLAGS = -DSHARE_DIR=\"$(pkgdatadir)\" -DLOCALE_DIR=\"$(datadir)/locale\"
++CPPFLAGS = @CPPFLAGS@ -DSHARE_DIR=\"$(pkgdatadir)\" -DLOCALE_DIR=\"$(datadir)/locale\"
  
- all: $(PROG)
+ bin_PROGRAMS = motor
  
-@@ -53,15 +57,15 @@
- 	cd ../ktools/src; make -f ../../$(PROG)/Makefile.kt
+@@ -7,5 +7,5 @@
+     lookout.cc compile.cc conf.cc cvs.cc debug.cc debugp.cc edit.cc grep.cc \
+     folder.cc plist.cc tagbrowser.cc templ.cc tlist.cc
  
- %.o : %.cc
--	@CXX@ $*.cc -c $(INCLUDE) '-DVERSION="$(VERSION)"' '-DSHAREDIR="$(datadir)"' -o $*.o
-+	@CXX@ $*.cc $(CXXFLAGS) -c $(INCLUDE) '-DVERSION="$(VERSION)"' '-DSHAREDIR="$(datadir)"' -o $*.o
- 
- %.o : %.c
--	@CC@ $*.c -c $(INCLUDE) '-DVERSION="$(VERSION)"' '-DSHAREDIR="$(datadir)"' -o $*.o
-+	@CC@ $*.c $(CFLAGS) -c $(INCLUDE) '-DVERSION="$(VERSION)"' '-DSHAREDIR="$(datadir)"' -o $*.o
- 
- install: all
--	install -s motor $(bindir)/$(PROG); \
--	mkdir -p $(datadir)/$(PROG); \
--	cp ../share/* ../COPYING $(datadir)/$(PROG)/
-+	mkdir -p $(DESTDIR)$(bindir) $(DESTDIR)$(datadir)/$(PROG)
-+	install motor $(DESTDIR)$(bindir)/$(PROG)
-+	cp ../share/* $(DESTDIR)$(datadir)/$(PROG)/
- 
- snap: mclean
- 	cd ../.. ; tar zcvfh motor.latest.tar.gz motor $(TAREXCLUDE)
-diff -Nru motor-1.2.3/ktools/src/Makefile.in motor-1.2.3.new/ktools/src/Makefile.in
---- motor-1.2.3/ktools/src/Makefile.in	Sat Jul  1 11:25:16 2000
-+++ motor-1.2.3.new/ktools/src/Makefile.in	Sun Jul  2 04:01:15 2000
-@@ -1,8 +1,9 @@
- CC = @CC@
- CPP = @CXX@
- RANLIB = @RANLIB@
--
--CFLAGS = #-g -Wall -DUNIX
-+CFLAGS = @CFLAGS@
-+LDFLAGS = @LDFLAGS@
-+CXXFLAGS = @CXXFLAGS@
- 
- INCLUDE = -I../include
- 
-@@ -22,10 +23,10 @@
- all: $(LIB)
- 
- %.o : %.cc
--	$(CPP) $*.cc -c $(INCLUDE) -o $*.o
-+	$(CPP) $*.cc $(CXXFLAGS) -c $(INCLUDE) -o $*.o
- 
- %.o : %.c
--	$(CC) $*.c -c $(INCLUDE) -o $*.o
-+	$(CC) $*.c -c $(CFLAGS) $(INCLUDE) -o $*.o
- 
- clean:
- 	rm -f *.o $(LIB); \
+-motor_LDADD = -lcurses ../parser/libparser.a ../ktools/src/libkonst.a @INTLLIBS@ @LIBS@
+-CXXFLAGS = -g
++motor_LDADD = -lncurses ../parser/libparser.a ../ktools/src/libkonst.a @INTLLIBS@ @LIBS@
++CXXFLAGS = @CXXFLAGS@ -g
