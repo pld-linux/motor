@@ -1,5 +1,5 @@
 Summary:	Text mode based programming IDE for Linux
-Summary:	¦rodowisko programistyczne dla Linuxa
+Summary(pl):	¦rodowisko programistyczne dla Linuxa
 Name:		motor
 Version:	2.17.13
 Release:	1
