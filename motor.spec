@@ -2,17 +2,17 @@ Summary:	Text mode based programming IDE for Linux
 Summary(pl):	¦rodowisko programistyczne dla Linuksa
 Name:		motor
 Version:	3.2.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Tools
 Source0:	http://konst.org.ua/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-autoconf.patch
 URL:		http://konst.org.ua/motor/
-BuildRequires:	libstdc++-devel
-BuildRequires:	ncurses-devel >= 5.0
-BuildRequires:	gettext-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
+BuildRequires:	libstdc++-devel
+BuildRequires:	ncurses-devel >= 5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,3 +59,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog FAQ README TODO tutorial/*
 %attr(755,root,root) %{_bindir}/motor
 %{_datadir}/motor
+%{_mandir}/man1/*
