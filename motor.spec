@@ -4,10 +4,11 @@ Version:	1.2.3
 Release:	2
 License:	GPL
 Group:		Development/Tools
+Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
 Source0:	http://konst.org.ua/download/%{name}-%{version}.tar.gz
-Patch0:		motor-autoconf.patch
+Patch0:		%{name}-autoconf.patch
 URL:		http://konst.org.ua/eng/software.motor.html
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel >= 5.0
@@ -24,10 +25,8 @@ is also provided.
 %patch -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -I/usr/include/ncurses"
-CXXFLAGS="$RPM_OPT_FLAGS -I/usr/include/ncurses -fno-rtti"
-LDFLAGS="-s"
-export CFLAGS CXXFLAGS LDFLAGS
+CFLAGS="%{rpmcflags} -I/usr/include/ncurses"
+CXXFLAGS="%{rpmcflags} -I/usr/include/ncurses -fno-rtti"
 %configure
 %{__make}
 
