@@ -7,6 +7,7 @@ License:	GPL
 Group:		Development/Tools
 Source0:	http://konst.org.ua/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-autoconf.patch
+Patch1:		%{name}-AC_PROG_MAKE_SET.patch
 URL:		http://konst.org.ua/motor/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -29,13 +30,13 @@ jest g³êboka integracja z CVS.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
-%{__gettextize} --intl
-cp po/Makevars.template po/Makevars
-%{__aclocal} -I m4
+%{__gettextize}
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 CPPFLAGS="-I%{_includedir}/ncurses"; export CPPFLAGS
@@ -58,6 +59,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog FAQ README TODO tutorial/*
-%attr(755,root,root) %{_bindir}/motor
+%attr(755,root,root) %{_bindir}/*
 %{_datadir}/motor
 %{_mandir}/man1/*
