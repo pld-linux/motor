@@ -1,8 +1,8 @@
 Summary:	Text mode based programming IDE for Linux
 Summary(pl):	¦rodowisko programistyczne dla Linuksa
 Name:		motor
-Version:	2.17.13
-Release:	2
+Version:	3.2.0
+Release:	1
 License:	GPL
 Group:		Development/Tools
 Source0:	http://konst.org.ua/download/%{name}-%{version}.tar.gz
