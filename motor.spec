@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Development/Tools
 Source0:	http://konst.org.ua/download/%{name}-%{version}.tar.gz
+# Source0-md5:	cb24eba00be62ff3fab2a1a4c03e1cb3
 Patch0:		%{name}-autoconf.patch
 Patch1:		%{name}-AC_PROG_MAKE_SET.patch
 URL:		http://konst.org.ua/motor/
