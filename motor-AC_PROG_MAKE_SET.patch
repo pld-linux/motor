@@ -1,0 +1,34 @@
+--- motor-3.2.3/configure.in~	Fri Oct 18 09:48:06 2002
++++ motor-3.2.3/configure.in	Fri Oct 18 09:48:06 2002
+@@ -6,6 +6,7 @@
+ AC_PROG_CC
+ AC_PROG_CXX
+ AC_PROG_RANLIB
++AC_PROG_MAKE_SET
+ 
+ ALL_LINGUAS="ru pl de zh_CN"
+ AM_GNU_GETTEXT
+@@ -43,23 +44,6 @@
+     fi
+ fi
+ 
+-###	check for gnu make which is needed to compile programs from motor
+-
+-AC_MSG_CHECKING(for GNU make)
+-GNUMAKE="gmake"
+-
+-if test -z "`which gmake 2>/dev/null`"; then
+-    if test -z "`which make 2>/dev/null`"; then
+-	AC_MSG_ERROR([hey, what you gonna use to build the program?! you must have either gmake or make binary to do it])
+-    else
+-	if test -z "`make --version | grep 'GNU Make version'`"; then
+-	    AC_MSG_ERROR([the make you have is not GNU])
+-	else
+-	    GNUMAKE="make"
+-	fi
+-    fi
+-fi
+-
+ AC_MSG_RESULT($GNUMAKE)
+ AC_DEFINE_UNQUOTED(GNUMAKE, "$GNUMAKE")
+ 
