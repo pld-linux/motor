@@ -21,6 +21,15 @@ diff -ur motor-3.2.4/po.orig/ru.po motor-3.2.4/po/ru.po
  msgid ""
  msgstr ""
  "Project-Id-Version: motor 3.1.5\n"
+@@ -160,7 +159,7 @@
+ #: src/project/motorproject.cc:583
+ #, c-format
+ msgid "VCS %s command wasn't successful. Retry?"
+-msgstr "Команда системы контроля версий завершилась некорректно. Повторить?"
++msgstr "Команда %s системы контроля версий завершилась некорректно. Повторить?"
+ 
+ #: src/project/motorproject.cc:588
+ #, fuzzy
 diff -ur motor-3.2.4/po.orig/zh_CN.po motor-3.2.4/po/zh_CN.po
 --- motor-3.2.4/po.orig/zh_CN.po	Thu Dec 12 18:03:33 2002
 +++ motor-3.2.4/po/zh_CN.po	Tue Aug  3 08:23:38 2004
