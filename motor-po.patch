@@ -1,0 +1,34 @@
+diff -ur motor-3.2.4/po.orig/de.po motor-3.2.4/po/de.po
+--- motor-3.2.4/po.orig/de.po	Thu Dec 12 18:03:33 2002
++++ motor-3.2.4/po/de.po	Tue Aug  3 08:23:31 2004
+@@ -10,7 +10,7 @@
+ "Last-Translator: Frank Gruender <elwood@mc5sys.in-berlin.de>\n"
+ "Language-Team: German <de@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=de_DE.iso8859-1\n"
++"Content-Type: text/plain; charset=iso8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ 
+ #: src/debugger/motordebugger.cc:97
+diff -ur motor-3.2.4/po.orig/ru.po motor-3.2.4/po/ru.po
+--- motor-3.2.4/po.orig/ru.po	Thu Dec 12 18:03:32 2002
++++ motor-3.2.4/po/ru.po	Tue Aug  3 08:23:17 2004
+@@ -2,7 +2,6 @@
+ # Copyright (C) YEAR Free Software Foundation, Inc.
+ # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+ #
+-#, fuzzy
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: motor 3.1.5\n"
+diff -ur motor-3.2.4/po.orig/zh_CN.po motor-3.2.4/po/zh_CN.po
+--- motor-3.2.4/po.orig/zh_CN.po	Thu Dec 12 18:03:33 2002
++++ motor-3.2.4/po/zh_CN.po	Tue Aug  3 08:23:38 2004
+@@ -2,7 +2,6 @@
+ # Copyright (C) YEAR Free Software Foundation, Inc.
+ # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+ #
+-#, fuzzy
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: motor 1.11.16\n"
