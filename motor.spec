@@ -1,8 +1,8 @@
 Summary:	Text mode based programming IDE for Linux
-Summary(pl):	¦rodowisko programistyczne dla Linuxa
+Summary(pl):	¦rodowisko programistyczne dla Linuksa
 Name:		motor
 Version:	2.17.13
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
@@ -25,8 +25,8 @@ manager, makefile generator, gdb front-end, etc. Deep CVS integration
 is also provided.
 
 %description -l pl
-Motor jest ¶rodowiskiem programistycznym dla Linuxa pracuj±cym w
-trybie tekstowym. Zawiera ono doskona³y edytor tekstów, zarz±dcê
+Motor jest ¶rodowiskiem programistycznym dla Linuksa pracuj±cym w
+trybie tekstowym. Zawiera ono doskona³y edytor tekstu, zarz±dcê
 projektów, generator plików Makefile, frontend dla gdb. Istotn± cech±
 jest g³êboka integracja z CVS.
 
@@ -35,7 +35,7 @@ jest g³êboka integracja z CVS.
 %patch -p1
 
 %build
-rm missing
+rm -f missing
 gettextize --copy --force
 aclocal
 autoconf
@@ -47,6 +47,8 @@ CXXFLAGS="%{rpmcflags} -fno-rtti"; export CXXFLAGS
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_datadir}/motor
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
