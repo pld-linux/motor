@@ -34,7 +34,7 @@ jest g³êboka integracja z CVS.
 %build
 rm -f missing
 %{__gettextize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 CPPFLAGS="-I%{_includedir}/ncurses"; export CPPFLAGS
