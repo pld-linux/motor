@@ -1,5 +1,5 @@
 Summary:	Text mode based programming IDE for Linux
-Summary(pl):	¦rodowisko programistyczne dla Linuksa
+Summary(pl.UTF-8):   Åšrodowisko programistyczne dla Linuksa
 Name:		motor
 Version:	3.2.4
 Release:	4
@@ -24,11 +24,11 @@ consists of a powerful editor with syntax highlight feature, project
 manager, makefile generator, gdb front-end, etc. Deep CVS integration
 is also provided.
 
-%description -l pl
-Motor jest ¶rodowiskiem programistycznym dla Linuksa pracuj±cym w
-trybie tekstowym. Zawiera ono doskona³y edytor tekstu, zarz±dcê
-projektów, generator plików Makefile, frontend dla gdb. Istotn± cech±
-jest g³êboka integracja z CVS.
+%description -l pl.UTF-8
+Motor jest Å›rodowiskiem programistycznym dla Linuksa pracujÄ…cym w
+trybie tekstowym. Zawiera ono doskonaÅ‚y edytor tekstu, zarzÄ…dcÄ™
+projektÃ³w, generator plikÃ³w Makefile, frontend dla gdb. IstotnÄ… cechÄ…
+jest gÅ‚Ä™boka integracja z CVS.
 
 %prep
 %setup -q
