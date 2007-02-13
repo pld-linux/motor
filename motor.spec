@@ -1,5 +1,5 @@
 Summary:	Text mode based programming IDE for Linux
-Summary(pl.UTF-8):   Środowisko programistyczne dla Linuksa
+Summary(pl.UTF-8):	Środowisko programistyczne dla Linuksa
 Name:		motor
 Version:	3.2.4
 Release:	4
